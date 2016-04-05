@@ -1,0 +1,13 @@
+{
+  "name": "spine",
+  "description": "Installs bgp unnumbered",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[ifupdown2]",
+    "recipe[quagga]"
+  ],
+  "env_run_lists": {}
+}

@@ -1,0 +1,12 @@
+{
+  "name": "webserver",
+  "description": "Installs apache",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apache]"
+  ],
+  "env_run_lists": {}
+}

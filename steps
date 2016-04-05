@@ -39,3 +39,7 @@ knife ssl fetch
 knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf01
 # on servers
 knife bootstrap -x cumulus --sudo  server01
+
+
+# upload cookbooks
+knife role from file
