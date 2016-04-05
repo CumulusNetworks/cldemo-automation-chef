@@ -42,4 +42,9 @@ knife bootstrap -x cumulus --sudo  server01
 
 
 # upload cookbooks
-knife role from file
+knife cookbook upload apache
+knife cookbook upload ifupdown
+knife cookbook upload ifupdown2
+knife cookbook upload quagga
+knife role from file roles/*
+knife node from file nodes/*

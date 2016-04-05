@@ -1,5 +1,5 @@
 {
-  "name": "spine",
+  "name": "server",
   "description": "Configures ifupdown legacy",
   "json_class": "Chef::Role",
   "default_attributes": {},
