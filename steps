@@ -1,21 +1,41 @@
 
 
 
+# install chef server
 wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
 echo "deb https://packages.chef.io/stable-apt trusty main" > chef-stable.list
 sudo mv chef-stable.list /etc/apt/sources.list.d/
 sudo apt-get update
 sudo service apache2 stop
-sudo apt-get install chef-server-core chef
+sudo apt-get install chef-server-core
 sudo chef-server-ctl reconfigure
-sudo chef-server-ctl start
+sudo chef-server-ctl restart
 sudo chef-server-ctl user-create cumulus rocket turtle cumulus@example.com 'CumulusLinux!' -f cumulus.pem
 sudo chef-server-ctl org-create cldemo cldemo --association_user cumulus -f cldemo-validator.pem
-sudo knife bootstrap -N leaf01 leaf01.lab.local -x cumulus -P password  --bootstrap-install-command 'apt-get update -y && apt-get install -y '
 
 
-wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
-echo "deb https://packages.chef.io/stable-apt wheezy main" > chef-stable.list
-sudo mv chef-stable.list /etc/apt/sources.list.d/
-sudo apt-get update
-sudo apt-get install chef-server-core
+# setup chef workstation
+sudo apt-get install chef
+git clone https://github.com/cumulusnetworks/cldemo-automation-chef
+cd cldemo-automation-chef
+mkdir .chef
+cp ../cumulus.pem .chef
+cp ../cldemo-validator.pem .chef
+nano .chef/knife.rb
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "cumulus"
+client_key               "#{current_dir}/cumulus.pem"
+validation_client_name   "cldemo-validator"
+validation_key           "#{current_dir}/cldemo-validator.pem"
+chef_server_url          "https://oob-mgmt-server.lab.local/organizations/cldemo"
+syntax_check_cache_path  "#{ENV['HOME']}/.chef/syntaxcache"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+
+knife ssl fetch
+# on switches
+knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf01
+# on servers
+knife bootstrap -x cumulus --sudo  server01
