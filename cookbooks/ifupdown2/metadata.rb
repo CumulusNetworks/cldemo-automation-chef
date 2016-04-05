@@ -1,6 +1,6 @@
 name             'ifupdown2'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Cumulus Networks'
+maintainer_email 'ce-ceng@cumulusnetworks.com'
 license          'All rights reserved'
 description      'Installs/Configures ifupdown2'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

@@ -1,0 +1,29 @@
+# /etc/network/interfaces template for switches (<%=@hostname%>)
+# Created by Ansible
+
+auto lo
+iface lo inet loopback
+  address <%=@intvars['loopback']%>/32
+
+auto eth0
+iface eth0 inet dhcp
+
+<% @intvars['neighbors'].each do |name, iface| -%>
+auto <%=name%>
+iface <%=name%>
+    address <%=@intvars['loopback']%>/32
+
+<% end %>
+
+
+<% (@intvars['networks'] or []).each do |name, network| -%>
+<% network['ports'].each do |port| -%>
+auto <%= port %>
+iface <%= port %>
+
+<% end %>
+auto <%= name %>
+iface <%= name %>
+    bridge-ports <%= network['ports'].join(' ') %>
+    address <%= network['ip'] %>
+<% end %>
