@@ -48,4 +48,6 @@ knife cookbook upload ifupdown2
 knife cookbook upload quagga
 knife role from file roles/*
 knife node from file nodes/*
+knife data bag create networking
+knife data bag from file networking data_bags/networking
 ssh leaf01 sudo chef-client
