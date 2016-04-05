@@ -1,0 +1,21 @@
+
+
+
+wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
+echo "deb https://packages.chef.io/stable-apt trusty main" > chef-stable.list
+sudo mv chef-stable.list /etc/apt/sources.list.d/
+sudo apt-get update
+sudo service apache2 stop
+sudo apt-get install chef-server-core chef
+sudo chef-server-ctl reconfigure
+sudo chef-server-ctl start
+sudo chef-server-ctl user-create cumulus rocket turtle cumulus@example.com 'CumulusLinux!' -f cumulus.pem
+sudo chef-server-ctl org-create cldemo cldemo --association_user cumulus -f cldemo-validator.pem
+sudo knife bootstrap -N leaf01 leaf01.lab.local -x cumulus -P password  --bootstrap-install-command 'apt-get update -y && apt-get install -y '
+
+
+wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
+echo "deb https://packages.chef.io/stable-apt wheezy main" > chef-stable.list
+sudo mv chef-stable.list /etc/apt/sources.list.d/
+sudo apt-get update
+sudo apt-get install chef-server-core
