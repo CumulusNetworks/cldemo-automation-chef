@@ -37,6 +37,8 @@ chef_server_url          "https://oob-mgmt-server.lab.local/organizations/cldemo
 syntax_check_cache_path  "#{ENV['HOME']}/.chef/syntaxcache"
 cookbook_path            ["#{current_dir}/../cookbooks"]
 
+knife ssl fetch
+
 # Bootstrap all nodes.
 knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf01
 knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf02
@@ -46,7 +48,6 @@ knife bootstrap -x cumulus --sudo  server01
 knife bootstrap -x cumulus --sudo  server02
 
 # Upload all of the code.
-knife ssl fetch
 knife cookbook upload apache
 knife cookbook upload ifupdown
 knife cookbook upload ifupdown2
