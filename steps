@@ -2,12 +2,13 @@
 
 
 # install chef server
+sudo su - cumulus
 wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
 echo "deb https://packages.chef.io/stable-apt trusty main" > chef-stable.list
 sudo mv chef-stable.list /etc/apt/sources.list.d/
 sudo apt-get update
 sudo service apache2 stop
-sudo apt-get install chef-server-core
+sudo apt-get install chef-server-core -y
 sudo chef-server-ctl reconfigure
 sudo chef-server-ctl restart
 sudo chef-server-ctl user-create cumulus rocket turtle cumulus@example.com 'CumulusLinux!' -f cumulus.pem
@@ -15,7 +16,7 @@ sudo chef-server-ctl org-create cldemo cldemo --association_user cumulus -f clde
 
 
 # setup chef workstation
-sudo apt-get install chef
+sudo apt-get install chef -y
 git clone https://github.com/cumulusnetworks/cldemo-automation-chef
 cd cldemo-automation-chef
 mkdir .chef

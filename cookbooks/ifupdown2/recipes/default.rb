@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-netvars = search( :networking, "id:common")
+netvars = search( :networking, "id:common" ).first
 
 
 execute 'reset networking' do
