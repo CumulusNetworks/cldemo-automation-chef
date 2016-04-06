@@ -25,7 +25,8 @@ template "/etc/quagga/Quagga.conf" do
 	mode "0644"
 	variables({
 		:intvars => netvars["interfaces"]["#{node['hostname']}"],
-		:networks => netvars["networks"]
+		:networks => netvars["networks"],
+		:hostname => "#{node['hostname']}"
 		})
 	notifies :restart, "service[quagga]"
 end
