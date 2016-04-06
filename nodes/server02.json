@@ -1,5 +1,5 @@
 {
-  "name": "server01",
+  "name": "server02",
   "chef_environment": "_default",
   "normal": {
     "tags": [
