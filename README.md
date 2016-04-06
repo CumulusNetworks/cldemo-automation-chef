@@ -56,7 +56,7 @@ Quickstart: Run the demo
 
 Topology Diagram
 ----------------
-This demo runs on a spine-leaf topology with two single-attached hosts. Each device's management interface is connected to an out-of-band management switch and bridged with the out-of-band management server that runs the Puppetserver.
+This demo runs on a spine-leaf topology with two single-attached hosts. Each device's management interface is connected to an out-of-band management switch and bridged with the out-of-band management server that runs the Chef server.
 
              +------------+       +------------+
              | spine01    |       | spine02    |
