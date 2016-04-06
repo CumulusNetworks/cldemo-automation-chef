@@ -56,7 +56,10 @@ knife node from file nodes/*
 knife data bag create networking
 knife data bag from file networking data_bags/networking
 
-# Create ACLs for nodes in the db
+# any time you update code... need to rerun knife commands
+
+
+# Create ACLs for nodes in the db if the client dies
 knife acl bulk add group clients nodes '.*' update,read
 
 

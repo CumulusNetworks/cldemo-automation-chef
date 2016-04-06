@@ -22,8 +22,7 @@ template "/etc/network/interfaces" do
 	group "root"
 	mode "0644"
 	variables({
-		:intvars => netvars["interfaces"]["#{node['hostname']}"],
-		:networks => netvars["networks"]
+        :intvars => netvars["interfaces"]["#{node['hostname']}"]
 		})
 	notifies :run, 'execute[reset networking]'
 end
