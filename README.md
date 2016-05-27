@@ -30,7 +30,6 @@ Quickstart: Run the demo
     cd cldemo-automation-chef
     cp ../cumulus.pem .chef
     cp ../cldemo-validator.pem .chef
-    current_dir = File.dirname(__FILE__)
     knife ssl fetch
     knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf01
     knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf02
