@@ -54,6 +54,8 @@ Quickstart: Run the demo
     ssh server01 sudo chef-client
     ssh server02 sudo chef-client
 
+Note: on 3.0, replace the bootstrap install command with `'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb'`
+
 Topology Diagram
 ----------------
 This demo runs on a spine-leaf topology with two single-attached hosts. Each device's management interface is connected to an out-of-band management switch and bridged with the out-of-band management server that runs the Chef server.
