@@ -31,10 +31,10 @@ Quickstart: Run the demo
     cp ../cumulus.pem .chef
     cp ../cldemo-validator.pem .chef
     knife ssl fetch
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf01
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' leaf02
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' spine01
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'apt-get update -y && apt-get install -y chef' spine02
+    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' leaf01
+    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' leaf02
+    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' spine01
+    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' spine02
     knife bootstrap -x cumulus --sudo  server01
     knife bootstrap -x cumulus --sudo  server02
     knife cookbook upload apache
@@ -52,8 +52,8 @@ Quickstart: Run the demo
     ssh spine02 sudo chef-client
     ssh server01 sudo chef-client
     ssh server02 sudo chef-client
-
-Note: on 3.0, replace the bootstrap install command with `'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb'`
+    ssh server01
+    wget 172.16.2.101
 
 Topology Diagram
 ----------------
