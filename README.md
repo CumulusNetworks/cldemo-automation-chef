@@ -15,7 +15,7 @@ Quickstart: Run the demo
     vagrant ssh oob-mgmt-server
     sudo su - cumulus
     wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
-    echo "deb https://packages.chef.io/stable-apt trusty main" > chef-stable.list
+    echo "deb https://packages.chef.io/current-apt xenial main" > chef-stable.list
     sudo mv chef-stable.list /etc/apt/sources.list.d/
     sudo apt-get update
     sudo service apache2 stop
@@ -25,7 +25,7 @@ Quickstart: Run the demo
     sudo chef-server-ctl user-create cumulus rocket turtle cumulus@example.com 'CumulusLinux!' -f cumulus.pem
     sudo chef-server-ctl org-create cldemo cldemo --association_user cumulus -f cldemo-validator.pem
     sudo apt-get install chef -y
-    sudo /opt/chef/embedded/bin/gem install knife-acl
+    sudo gem install knife-acl
     git clone https://github.com/cumulusnetworks/cldemo-automation-chef
     cd cldemo-automation-chef
     cp ../cumulus.pem .chef
