@@ -14,6 +14,7 @@ Quickstart: Run the demo
     sudo su - cumulus
     wget -qO - https://downloads.chef.io/packages-chef-io-public.key | sudo apt-key add -
     echo "deb https://packages.chef.io/current-apt xenial main" > chef-stable.list
+    echo "Acquire::ForceHash \"sha1\";" | sudo tee -a /etc/apt/apt.conf.d/02-chefpackagesfix
     sudo mv chef-stable.list /etc/apt/sources.list.d/
     sudo apt-get update
     sudo service apache2 stop
