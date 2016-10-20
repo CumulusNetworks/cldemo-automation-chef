@@ -24,7 +24,6 @@ Quickstart: Run the demo
     sudo chef-server-ctl user-create cumulus rocket turtle cumulus@example.com 'CumulusLinux!' -f cumulus.pem
     sudo chef-server-ctl org-create cldemo cldemo --association_user cumulus -f cldemo-validator.pem
     sudo apt-get install chef -y
-    sudo gem install knife-acl
     git clone https://github.com/cumulusnetworks/cldemo-automation-chef
     cd cldemo-automation-chef
     cp ../cumulus.pem .chef
@@ -44,7 +43,6 @@ Quickstart: Run the demo
     knife node from file nodes/*
     knife data bag create networking
     knife data bag from file networking data_bags/networking
-    knife acl bulk add group clients nodes '.*' update,read
     ssh leaf01 sudo chef-client
     ssh leaf02 sudo chef-client
     ssh spine01 sudo chef-client
