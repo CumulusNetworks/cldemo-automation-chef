@@ -29,10 +29,10 @@ Quickstart: Run the demo
     cp ../cumulus.pem .chef
     cp ../cldemo-validator.pem .chef
     knife ssl fetch
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' leaf01
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' leaf02
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' spine01
-    knife bootstrap -x cumulus --sudo  --bootstrap-install-command 'wget https://packages.chef.io/stable/debian/8/chef_12.10.24-1_amd64.deb && dpkg -i chef_12.10.24-1_amd64.deb' spine02
+    knife bootstrap -x cumulus --sudo  leaf01
+    knife bootstrap -x cumulus --sudo  leaf02
+    knife bootstrap -x cumulus --sudo  spine01
+    knife bootstrap -x cumulus --sudo  spine02
     knife bootstrap -x cumulus --sudo  server01
     knife bootstrap -x cumulus --sudo  server02
     knife cookbook upload apache
